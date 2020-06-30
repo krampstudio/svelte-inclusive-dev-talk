@@ -1,0 +1,144 @@
+
+@font-face {
+  font-family: 'Galindo';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Galindo'),
+        url('../fonts/Galindo/Galindo-Regular.eot') format('eot'),
+        url('../fonts/Galindo/Galindo-Regular.woff') format('woff'),
+        url('../fonts/Galindo/Galindo-Regular.ttf') format('truetype'),
+        url('../fonts/Galindo/Galindo-Regular.svg') format('svg');
+}
+
+@font-face {
+  font-family: 'PT_Serif';
+  font-style: normal;
+  font-weight: bold;
+  src: local('PT Serif'), local('PT_Serif'), local('PTSerif'),
+        url('../fonts/PT_Serif/PT_Serif-Bold.eot') format('eot'),
+        url('../fonts/PT_Serif/PT_Serif-Bold.woff') format('woff'),
+        url('../fonts/PT_Serif/PT_Serif-Bold.ttf') format('truetype'),
+        url('../fonts/PT_Serif/PT_Serif-Bold.svg') format('svg');
+}
+
+@font-face {
+  font-family: 'PT_Serif';
+  font-style: normal;
+  font-weight: normal;
+  src: local('PT_Serif'),
+        url('../fonts/PT_Serif/PT_Serif-Regular.eot') format('eot'),
+        url('../fonts/PT_Serif/PT_Serif-Regular.woff') format('woff'),
+        url('../fonts/PT_Serif/PT_Serif-Regular.ttf') format('truetype'),
+        url('../fonts/PT_Serif/PT_Serif-Regular.svg') format('svg');
+}:
+
+@font-face {
+  font-family: 'PT_Serif';
+  font-style: italic;
+  font-weight: bold;
+  src: local('PT Serif'), local('PT_Serif'), local('PTSerif'),
+        url('../fonts/PT_Serif/PT_Serif-BoldItalic.eot') format('eot'),
+        url('../fonts/PT_Serif/PT_Serif-BoldItalic.woff') format('woff'),
+        url('../fonts/PT_Serif/PT_Serif-BoldItalic.ttf') format('truetype'),
+        url('../fonts/PT_Serif/PT_Serif-BoldItalic.svg') format('svg');
+}
+
+@font-face {
+  font-family: 'PT_Serif';
+  font-style: italic;
+  font-weight: normal;
+  src: local('PT_Serif'),
+        url('../fonts/PT_Serif/PT_Serif-Italic.eot') format('eot'),
+        url('../fonts/PT_Serif/PT_Serif-Italic.woff') format('woff'),
+        url('../fonts/PT_Serif/PT_Serif-Italic.ttf') format('truetype'),
+        url('../fonts/PT_Serif/PT_Serif-Italic.svg') format('svg');
+}
+::root {
+    --text-color: #222;
+    --background-color: #fefefe;
+    --border-color: #e83689;
+}
+
+body {
+    font-family: 'Verdana';
+    color: var(--text-color);
+    background-color: #fff;
+}
+h1, h2, h3 {
+    font-family: 'Verdana';
+    font-weight: normal;
+    color: #333;
+    background-color: #fff;
+    text-decoration: underline solid #e83689;
+
+}
+a {
+    color: blue;
+}
+a:hover {
+    text-decoration: none;
+}
+.remark-container {
+    background-color: #fff;
+}
+.remark-slide-content {
+    background-color: #fff;
+}
+.remark-slide-number {
+    color: orange;
+    opacity:.9;
+}
+
+.remark-code {
+    padding: 1em .5em !important;
+    border: solid 5px #e83689;
+    border-radius: 5px;
+}
+.remark-code, .remark-inline-code {
+    font-family: Consolas,Monaco,"Andale Mono",monospace;
+    font-size: 1.25rem;
+    text-align:left;
+}
+blockquote {
+    border: solid 2px
+    font-style: italic;
+    padding: .5rem 2rem;
+    color: var(--text-color);
+    position:relative;
+    margin: 0;
+    font-size: 1.75rem;
+
+    border: solid 5px #e83689;
+}
+blockquote:before {
+    content : '\201F';
+    font-size: 2em;
+    font-weight: bold;
+    position: absolute;
+    top: .5rem;
+    left: .5rem;
+    color: purple;
+}
+img {
+    max-height : 450px;
+    border: solid 5px #e83689;
+    border-radius: 20px;;
+    box-shadow: 15px 15px purple;
+}
+.remark-slide-content h1 {
+    font-size: 70px;
+}
+table {
+    width: 100%;
+    margin :auto;
+    border-collapse: collapse;;
+}
+th, td {
+    border: solid 1px #444;
+    text-align: left;
+    padding: 5px 10px;
+}
+th {
+    text-align: center;
+}
+

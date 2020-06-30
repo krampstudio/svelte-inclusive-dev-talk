@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <title>About Svelte</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link type="text/css" rel="stylesheet" href="style/style.css" />
+  </head>
+  <body>
+    <textarea id="source">
+
+class: center, middle
+
+![svelte](./img/svelte-a11y.png)
+
+---
+class: center, middle
+
+## The _new kids on the block_
+
+![the new kids on the block](./img/new-kids-on-the-block_orig.jpg)
+
+
+
+---
+class: center, middle
+
+
+> Svelte is a **component** framework.<br>
+> A language and a compiler.
+
+---
+class: middle, center
+
+### Under the hood
+
+![factory](./img/factory.jpg)
+
+---
+class: middle, center
+
+### No runtime
+
+![compile](./img/svelte-complation.png)
+
+<small>Virtual DOM free</small>
+
+---
+class: center, middle
+
+## Beyond the hype
+
+![hypster](./img/hipster.jpg)
+---
+class: center, middle
+
+### One screen rule
+
+![common setup](./img/many-screens.jpg)
+
+
+---
+class: middle, center
+
+```svelte
+<script>
+    let event = 'luxembourg.js';
+</script>
+
+<style>
+    h1 {
+        color: navy;
+    }
+</style>
+
+<h1> Good evening {event}</h1>
+```
+
+✨ [REPL](https://svelte.dev/repl/b5340def6b2140f4a7a0aa57865230f4?version=3) ✨
+
+---
+class: middle, center
+
+### Boilerplate free
+
+<img alt="one way binding" src="./img/useless.gif" height="500px" />
+
+
+---
+class: middle, center
+
+```html
+<script>
+    export let label  = 'Am I a button ?';
+    export let active = false;
+</script>
+
+<style>
+	.active {
+        color: white;
+        background-color: darkblue;
+    }
+</style>
+
+<button class:active>{label}</button>
+
+```
+
+✨ [REPL](https://svelte.dev/repl/77cd3526d1274a4bbf908fd2ec3cf2c2?version=3.15.0) ✨
+---
+class: middle, center
+
+
+### Reactive by design
+
+<img alt="one way binding" src="./img/reactive.gif" height="520px" />
+
+
+---
+class: middle, center
+
+```html
+<script>
+  let tempFarenheit = 32;
+  let tempCelcius;
+
+  $: tempCelcius = (tempFarenheit - 32) * 0.55;
+
+</script>
+
+<style>
+  span {
+    font-weight: bold;
+  }
+</style>
+
+<label>
+    Value in F° :
+    <input
+        bind:value={tempFarenheit}
+        type="number" min="0" max="200"
+    />
+</label>
+
+<p>Value in C° : <span>{tempCelcius}</span></p>
+
+```
+✨ [REPL](https://svelte.dev/repl/fe4e0dfd70cc4e7185617489a14ad71c?version=3.15.0) ✨
+
+---
+class: middle, center
+
+### Style included
+
+![fashion](./img/style.jpg)
+
+---
+class: middle, center
+
+```html
+<script>
+    export let highlight = false;
+    export let outline   = false;
+</script>
+
+<style>
+    p {
+        font-family: monospace;
+        font-style: italic;
+    }
+    .highlight {
+        background-color: pink;
+        color: purple;
+    }
+    .outline {
+       border: dashed 3px blue;
+    }
+</style>
+
+<p class:highlight class:outline>Beware fashion included</p>
+
+```
+✨ [REPL](https://svelte.dev/repl/f6be800ba43b4666afe9802ab3018687?version=3) ✨
+---
+class: middle, center
+
+```html
+<script>
+    import { fade, fly } from 'svelte/transition';
+    export let highlight = false;
+    export let outline   = false;
+</script>
+
+<style>
+    p {
+        font-family: monospace;
+        font-style: italic;
+    }
+    .highlight {
+        background-color: pink;
+        color: purple;
+    }
+    .outline {
+       border: dashed 3px blue;
+    }
+</style>
+
+<p class:highlight class:outline
+    in:fly={{ y: -200, duration : 2000 }}
+    out:fade
+ >Beware flying fashion included</p>
+```
+✨ [REPL](https://svelte.dev/repl/33816c63c777420d90dd357226c23bf0?version=3.16.0) ✨
+---
+class: middle, center
+
+### State included
+
+![robot](./img/robot.gif)
+
+---
+class: middle, center
+
+```js
+import { writable } from 'svelte/store';
+
+const states = {
+    up : 'up',
+    right : 'right',
+    down : 'down',
+    left : 'left'
+};
+
+function createRobotState() {
+    let currentState =  states.up;
+	const { subscribe, set, update, get } = writable(currentState);
+
+	return {
+        subscribe,
+        set,
+        update,
+        move(newState){
+            set(newState);
+        }
+	};
+}
+
+export const robotState = createRobotState();
+```
+
+---
+class: middle, center
+
+```html
+<script>
+    import { robotState } from './robotState.js';
+</script>
+
+<h1> Robot is {$robotState}</h1>
+
+<button on:click={ () => robotState.move('up') } > ↑ </button>
+<button on:click={ () => robotState.move('right') } > →  </button>
+<button on:click={ () => robotState.move('down') } > ↓ </button>
+<button on:click={ () => robotState.move('left') } > ←  </button>
+
+```
+✨ [REPL](https://svelte.dev/repl/f6be800ba43b4666afe9802ab3018687?version=3) ✨
+---
+
+class: middle, center
+
+### Size matters (in web dev)
+
+![wrong tool](./img/size.gif)
+
+---
+class: middle, center
+
+## Inclusive development
+
+---
+class: middle, center
+
+## Noone left behind
+
+![alf](./img/alf.gif)
+
+---
+class: middle, center
+
+### i18n & l10n
+
+![lost in translation](./img/lit.gif)
+
+---
+class: middle
+
+### direction
+
+- [CSS logical properties & values](https://www.w3.org/TR/css-logical-1/) : for text
+- [dir](https://www.w3.org/TR/html51/dom.html#the-dir-attribute) & [:global](https://svelte.dev/docs#style)  : for layout
+
+---
+class: middle, center
+
+```html
+<style>
+    header img {
+        margin-left: 2rem;
+        margin-right: 1rem;
+    }
+    :global([dir='rtl']) {
+        header img {
+            margin-right: 2rem;
+            margin-left: 1rem;
+        }
+    }
+</style>
+<header>
+    <h1><img src="logo.svg" alt="skynet" />Skynet Inc</h1>
+    <nav>
+        <ul>
+            <li>About</li>
+            <li>Settings</li>
+        </ul>
+    </nav>
+</header>
+```
+✨ [REPL](https://svelte.dev/repl/f6be800ba43b4666afe9802ab3018687?version=3) ✨
+---
+class: middle, center
+
+### Yells at you
+
+![comic sans ms](./img/sans-ms.gif)
+
+---
+class: middle, center
+```html
+<header>
+	 <a href="#" role="extlink">
+	    <img src="https://secure.meetupstatic.com/photos/event/7/f/5/2/global_433352594.jpeg" />
+	 </a>
+	 <h1></h1>
+</header>
+<main aria-labeledby="main-title" tabIndex="foo">
+  <h2 id="main-title" aria-hidden >invisible header</h2>
+	<marquee>Hello Everybody</marquee>
+</main>
+```
+✨ [REPL](https://svelte.dev/repl/0b0266846faa4463b64d05d13d6c608a?version=3.23.2) ✨
+---
+class: middle,center
+
+### All users, all devices
+
+![comic sans ms](./img/device.gif)
+
+---
+class: middle,center
+
+## Anything else ?
+
+---
+class: middle, center
+
+@kramp
+
+---
+
+    </textarea>
+    <script src="js/remark-latest.min.js"></script>
+    <script>
+        var slideshow = remark.create({
+            ratio: '4:3',
+            highlightStyle: 'tomorrow-night-eighties',
+            highlightSpans: false
+        });
+    </script>
+  </body>
+</html>
